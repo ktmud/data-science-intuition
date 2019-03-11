@@ -3,8 +3,8 @@ import re
 from urllib.parse import quote as encode_uri
 
 content = open('DS_Intuition.md').read()
-IMG_ROOT_SM = 'https://latex.codecogs.com/gif.latex?' + encode_uri('\dpi{85}')
-IMG_ROOT_L = 'https://latex.codecogs.com/gif.latex?' + encode_uri('\dpi{120}')
+IMG_ROOT_SM = 'https://latex.codecogs.com/gif.latex?' + encode_uri('\dpi{100}')
+IMG_ROOT_L = 'https://latex.codecogs.com/gif.latex?' + encode_uri('\dpi{150}')
 
 content = re.sub(
     r'\$\$(.+?)\$\$',
