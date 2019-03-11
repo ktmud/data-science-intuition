@@ -42,7 +42,7 @@ For a 95% confidence interval, if we repeat the same sampling and estimation pro
 
 R-sqaured tells how much the variance of the target outcome is explained by the model. The higher R-squared, the better the model explains the data.
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7DR%5E2%20%3D%201%20-%20SSE/SST%2C"></p>
+<p align="center"><img alt="" src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7DR%5E2%20%3D%201%20-%20SSE/SST%2C"></p>
 
 where SSE is the squared sum of the error terms (i.e., sum of squares of residuals, predict value - true value), SST is the squared sum of the data variance (total sum of squares, data points - sample mean).
 
@@ -50,7 +50,7 @@ SST is total variance, SSE is remaining unexplained variance.
 
 More features fit the data better, therefore will see smaller SSE. It's better to use the adjusted R-squared,
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7D%5Cbar%7BR%7D%5E2%20%3D%201-%5Cfrac%7BSS_%7Bres%7D/df_e%7D%7BSS_%7Btot%7D/df_t%7D%20%3D%20R%5E2%20-%20%281%20-%20R%5E2%29%5Cfrac%7Bp%7D%7Bn-p-1%7D%2C"></p>
+<p align="center"><img alt="" src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7D%5Cbar%7BR%7D%5E2%20%3D%201-%5Cfrac%7BSS_%7Bres%7D/df_e%7D%7BSS_%7Btot%7D/df_t%7D%20%3D%20R%5E2%20-%20%281%20-%20R%5E2%29%5Cfrac%7Bp%7D%7Bn-p-1%7D%2C"></p>
 
 which penalizes more complex models.
 
@@ -93,11 +93,11 @@ In Bayesian statistics, parameters are a random variable with certain distributi
 
 Normalization "normalize" values to a range of [0, 1], by substract the minimal value then divide by value range.
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7Dx%27%20%3D%20%5Cfrac%7Bx%20-%20x_%7B%5Cmin%7D%7D%7Bx_%7B%5Cmax%7D%20-%20x_%7B%5Cmin%7D%7D"></p>
+<p align="center"><img alt="" src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7Dx%27%20%3D%20%5Cfrac%7Bx%20-%20x_%7B%5Cmin%7D%7D%7Bx_%7B%5Cmax%7D%20-%20x_%7B%5Cmin%7D%7D"></p>
 
 Standardization "standardize" values to multiples of standard deviation by removing the mean then divide by standard deviation.
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7Dx%27%20%3D%20%5Cfrac%7Bx%20-%20%5Cmu%7D%7B%5Csigma%7D"></p>
+<p align="center"><img alt="" src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7Dx%27%20%3D%20%5Cfrac%7Bx%20-%20%5Cmu%7D%7B%5Csigma%7D"></p>
 
 ### What are the methods to reduce model complexity in linear regression?
 
