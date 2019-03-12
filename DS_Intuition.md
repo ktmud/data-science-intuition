@@ -6,7 +6,7 @@ All answers here are written to be a quick response to interview questions so th
 
 ----
 
-## Statistics
+## Statistics and Inference
 
 
 ### What is the Central Limit Theorem and why is it important?
@@ -62,14 +62,14 @@ which penalizes more complex models.
 
 ### What is selection bias?
 
-
-### What is an example of a dataset with a non-Gaussian distribution?
-
 ### What is the difference between frequentist statistics and Bayesian statistics?
 
 In frequentist statistics, parameters are fixed constants. We calculate the likelihood $P(X|\theta)$, the probability of seeing the obsered data points given the parameter of interest.
 
 In Bayesian statistics, parameters are a random variable with certain distribution. We capture our priori uncertainty about the parameter in the form of a prior distribution, $P(\theta)$, then update our belief according to the data we observed, so to get a posterior distribution of the parameter, $P(\theta|X)$. Bayesian' Theorem tells us $P(\theta|X) \propto P(X|\theta) \cdot P(\theta)$.
+
+### How should you decide when to stop an experiment?
+
 
 ----
 
@@ -77,16 +77,35 @@ In Bayesian statistics, parameters are a random variable with certain distributi
 
 ### Explain the relationship between type I Error, type II error, precision, recall, sensitivity and specificity.
 
-- Type I error: False Positive
-  - Incorrectly reject the null hypothesis when null is true
-  - Type I error rate = false positive rate = significant level = $\alpha$ = 1 - specificity
+- **Type I error: False Positive**, incorrectrly reject the null hypothesis when null is true
   - Perfect specificity gives zero Type I error.
-- Type II error: False Negative
-  - Failed to reject the null when null is false (alternative hypothesis is true）
-  - Type II error rate = false negative rate = $\beta$
-  - Power = sensitivity = recall = $1 - \beta$ = the probaility of detecting the effect when there is indeed an effect.
+  - Type I error rate = $\alpha$ <br>
+    = false positive rate <br>
+    = significant level <br>
+    = 1 - specificity <br>
+- **Type II error: False Negative**, failed to reject the null when null is false (alternative is true）
   - Perfect sensitivity gives zero Type II error.
+  - Type II error rate = $\beta$ <br>
+    = false negative rate <br>
+    = 1 - true positive rate <br>
+    = 1 - sensitivity / recall / power <br>
+    = 1 - the probaility of detecting the effect when there is indeed an effect.
 
+**True positive** means the prediction of being positive is true. Therefore "true positive rate" means of all observations predicted to be positive, how many of them are actually positive.
+
+- True positive + false negative = all known positive observations. 
+- True positive + false positive = all assumed positive observations.
+- False positive + true negative = all known negative observations.
+
+### What is ROC curve?
+
+Receiver operating characteristics (ROC) curve is a plot of true positive rate against false positive rate at various threshold settings, normally with the x-axis being the false positive rate (1 - sensitivity), and the y-axis being the true positive rate (sensitivity).
+
+We make a prediction $p \in [0, 1]$, using different threshold $q \in (0, 1)$, we say all observations with $p < q$ are negative, and others positive.
+
+### What is AUC?
+
+AUC is the probability that a randomly chosen observation from the positive class is greater than a randomly chosen observation from the negative class.
 
 
 ### What's the difference between normalization and standardization?
@@ -115,28 +134,87 @@ Lasso is prefered because it can be automated, considers all features simultaneo
 
 ### Compare the advantages and disadvantages of different ML methods.
 
+#### Linear Regression
 
-Linear Regression
+- Pros:
+- Cons:
 
-**Pros:**
+#### Decision Tree
 
+- Pros:
+  - Easy to explain and interpretable
+  - Categorical variable support
+  - Fast
+- Cons:
+  - High variance
+  - Poor additive modeling
+
+#### Bagging (Random Forest)
+
+Random Forest: use a subset of features to grow trees.
+
+- Pros:
+  - Decrease in **variance** and better accuracy
+  - Resilient to outliers
+  - Handles missing values well
+  - Free validation set
+  - Parallel training possible
+- Cons:
+  - Increase in bias
+  - Harder to interpret
+  - More expensive to train
+
+#### Boosting (Gradient Boosting Tree, AdaBoosting)
+
+AdaBoosting: up-weight misclassified data points at each step.
+
+- Pros:
+  - Decrease in **bias** and better accuracy
+  - Additive modeling
+- Cons:
+  - Increase in variance
+  - Prone to overfitting
+
+
+#### Neutral Networks
+
+- Pros:
+  - Handles unstructured data (CV, NLP) well
 
 **Cons:**
 
+
+
 ### What is PCA?
 
-Principal Component Analysis: find k vectors (principal components) onto which to project n-dimensional data, so as to minimize the projection error.
+Principal Component Analysis: the process of projecting high dimensional data to lower dimensional vectors in a way that minimizes the projection error. Typically done by matrix decomposition.
 
 Steps to compute PCA:
-1. Do mean normalization on the data.
+
+1. Run mean normalization on the data.
 2. Computate covariance matrix $\Sigma$.
-3. Compute eigenvectors with Singular Value Decomposition: $\Sigma = USV'$.
+3. Run Singular Value Decomposition: $\Sigma = USV'$, in which diagonal entries of $S$ are known as the singular value of $\Sigma$.
 4. The first $k$ columns of matrix $U$ is the principal components.
 5. $z = U_{reduced}' x$ is the reduced dimensions.
+
+The intuition of singular values:
 
 
 
 ## Business Case Study
+
+For business case and product analysis type of problems, the most important thing is demonstrate a clear structure in your answers. You'd need: 1. a clear framework or issue tree to tackle the problem; 2. a clear hypothesis whenever applicable.
+
+In data science interviews, there are mainly three types of business case/product sense problems:
+
+1. Make a binary choice---whether a feature is good, whether to enter a market...
+2. Predict a numeric value---sales, demand, revenue...
+3. Find out why---why certain metrics dropped, why some users perform worse than others...
+
+It's rare for a Data Science interviewer to ask you how would you design a product feature.
+
+your hypothesis first, then look for evidence to support or reject your hypothesis. If no hypothesis is needed, 
+
 
 ## Probability and Brain Teaser
 
