@@ -6,7 +6,7 @@ All answers here are written to be a quick response to interview questions so th
 
 ----
 
-## Statistics
+## Statistics and Inference
 
 
 ### What is the Central Limit Theorem and why is it important?
@@ -38,6 +38,21 @@ For a 95% confidence interval, if we repeat the same sampling and estimation pro
 
 **General notes:** a lot of concepts in frequentist inference involves "take infinite samples" or "read the same measurement in the long run". This is directly related to the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem). You should always call out the fact that the confidence of our estimation is based on a repetitive sampling process.
 
+### How do you decide when to stop an experiment?
+
+### What's the difference between t-test, z-test, f-test, and Chi-squared test?
+
+- **One-sample t-test**: 
+
+### What is the difference between frequentist statistics and Bayesian statistics?
+
+In frequentist statistics, parameters are fixed constants. We calculate the likelihood ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28X%7C%5Ctheta%29), the probability of seeing the obsered data points given the parameter of interest.
+
+In Bayesian statistics, parameters are a random variable with certain distribution. We capture our priori uncertainty about the parameter in the form of a prior distribution, ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%29), then update our belief according to the data we observed, so to get a posterior distribution of the parameter, ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%7CX%29). Bayesian' Theorem tells us ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%7CX%29%20%5Cpropto%20P%28X%7C%5Ctheta%29%20%5Ccdot%20P%28%5Ctheta%29).
+
+
+### What are the assumptions required for linear regression?
+
 ### What is R-squared?
 
 R-sqaured tells how much the variance of the target outcome is explained by the model. The higher R-squared, the better the model explains the data.
@@ -54,7 +69,15 @@ More features fit the data better, therefore will see smaller SSE. It's better t
 
 which penalizes more complex models.
 
-### What are the assumptions required for linear regression?
+### How to deal with multicollinearity in linear regression?
+
+Multicollinearity is when multiple predictors correlate with each other to a substantial degree.
+
+In addition to manually identify which variables could be correlated and leave only the most important ones in regression, a couple of methods can be used to automatiacally reduce collinearity:
+
+1. Ridge or Lasso regression: add L2/L1 regularization term to penalize complex models.
+2. Principal Component Regression:
+3. Partial Least Squares Regression:
 
 
 ### What is a statistical interaction?
@@ -63,13 +86,16 @@ which penalizes more complex models.
 ### What is selection bias?
 
 
-### What is an example of a dataset with a non-Gaussian distribution?
+### What is Propensity Score Matching?
 
-### What is the difference between frequentist statistics and Bayesian statistics?
+Propensity score is normally used in analyzing the effect of biased treatment assignment, e.g., how much do new clinics in poor villages affect the mortality rate? how much more expensive are waterfront properties than regular homes?
 
-In frequentist statistics, parameters are fixed constants. We calculate the likelihood ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28X%7C%5Ctheta%29), the probability of seeing the obsered data points given the parameter of interest.
+The basic idea is:
 
-In Bayesian statistics, parameters are a random variable with certain distribution. We capture our priori uncertainty about the parameter in the form of a prior distribution, ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%29), then update our belief according to the data we observed, so to get a posterior distribution of the parameter, ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%7CX%29). Bayesian' Theorem tells us ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%7CX%29%20%5Cpropto%20P%28X%7C%5Ctheta%29%20%5Ccdot%20P%28%5Ctheta%29).
+1. Create a new control group by finding the most similar control observation for every treatment observation based on some selection variable (background characteristics).
+2. Compute the treatment effect by comparing the average outcome in the treatment and the new control group.
+
+The trick is in Step 1, in which we use Logistic Regression and all data available to estimate the probability that an observation receives the treatment. Then we use the probability to match pairs of similar observations.
 
 ----
 
@@ -77,16 +103,35 @@ In Bayesian statistics, parameters are a random variable with certain distributi
 
 ### Explain the relationship between type I Error, type II error, precision, recall, sensitivity and specificity.
 
-- Type I error: False Positive
-  - Incorrectly reject the null hypothesis when null is true
-  - Type I error rate = false positive rate = significant level = ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5Calpha) = 1 - specificity
+- **Type I error: False Positive**, incorrectrly reject the null hypothesis when null is true
   - Perfect specificity gives zero Type I error.
-- Type II error: False Negative
-  - Failed to reject the null when null is false (alternative hypothesis is true）
-  - Type II error rate = false negative rate = ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5Cbeta)
-  - Power = sensitivity = recall = ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D1%20-%20%5Cbeta) = the probaility of detecting the effect when there is indeed an effect.
+  - Type I error rate = ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5Calpha) <br>
+    = false positive rate <br>
+    = significant level <br>
+    = 1 - specificity <br>
+- **Type II error: False Negative**, failed to reject the null when null is false (alternative is true）
   - Perfect sensitivity gives zero Type II error.
+  - Type II error rate = ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5Cbeta) <br>
+    = false negative rate <br>
+    = 1 - true positive rate <br>
+    = 1 - sensitivity / recall / power <br>
+    = 1 - the probaility of detecting the effect when there is indeed an effect.
 
+**True positive** means the prediction of being positive is true. Therefore "true positive rate" means of all observations predicted to be positive, how many of them are actually positive.
+
+- True positive + false negative = all known positive observations. 
+- True positive + false positive = all assumed positive observations.
+- False positive + true negative = all known negative observations.
+
+### What is ROC curve?
+
+Receiver operating characteristics (ROC) curve is a plot of true positive rate against false positive rate at various threshold settings, normally with the x-axis being the false positive rate (1 - sensitivity), and the y-axis being the true positive rate (sensitivity).
+
+We make a prediction ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dp%20%5Cin%20%5B0%2C%201%5D), using different threshold ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dq%20%5Cin%20%280%2C%201%29), we say all observations with ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dp%20%3C%20q) are negative, and others positive.
+
+### What is AUC?
+
+AUC is the probability that a randomly chosen observation from the positive class is greater than a randomly chosen observation from the negative class.
 
 
 ### What's the difference between normalization and standardization?
@@ -115,28 +160,86 @@ Lasso is prefered because it can be automated, considers all features simultaneo
 
 ### Compare the advantages and disadvantages of different ML methods.
 
+#### Linear Regression
 
-Linear Regression
+- Pros:
+- Cons:
 
-**Pros:**
+#### Decision Tree
 
+- Pros:
+  - Easy to explain and interpretable
+  - Categorical variable support
+  - Fast
+- Cons:
+  - High variance
+  - Poor additive modeling
+
+#### Bagging (Random Forest)
+
+Bagging = Bootstrap Aggregation: bootstrap to pick a sample of training data with replacement, train separate submodels, aggregate submodels' predictions by taking the majority vote.
+
+Random Forest: use a subset of features to grow trees.
+
+- Pros:
+  - Decrease in **variance** and better accuracy
+  - Resilient to outliers
+  - Handles missing values well
+  - Free validation set
+  - Parallel training possible
+- Cons:
+  - Increase in bias
+  - Harder to interpret
+  - More expensive to train
+
+#### Boosting (Gradient Boosting Tree, AdaBoosting)
+
+AdaBoosting: up-weight misclassified data points at each step.
+
+- Pros:
+  - Decrease in **bias** and better accuracy
+  - Additive modeling
+- Cons:
+  - Increase in variance
+  - Prone to overfitting
+
+
+#### Neutral Networks
+
+- Pros:
+  - Handles unstructured data (CV, NLP) well
 
 **Cons:**
 
+
+
 ### What is PCA?
 
-Principal Component Analysis: find k vectors (principal components) onto which to project n-dimensional data, so as to minimize the projection error.
+Principal Component Analysis: the process of projecting high dimensional data to lower dimensional vectors in a way that minimizes the projection error. Typically done by matrix decomposition.
 
 Steps to compute PCA:
-1. Do mean normalization on the data.
+
+1. Run mean normalization on the data.
 2. Computate covariance matrix ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5CSigma).
-3. Compute eigenvectors with Singular Value Decomposition: ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5CSigma%20%3D%20USV%27).
+3. Run Singular Value Decomposition: ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5CSigma%20%3D%20USV%27), in which diagonal entries of ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DS) are known as the singular value of ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5CSigma).
 4. The first ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dk) columns of matrix ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DU) is the principal components.
 5. ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dz%20%3D%20U_%7Breduced%7D%27%20x) is the reduced dimensions.
 
 
-
 ## Business Case Study
+
+For business case and product analysis type of problems, the most important thing is demonstrate a clear structure in your answers. You'd need: 1. a clear framework or issue tree to tackle the problem; 2. a clear hypothesis whenever applicable.
+
+In data science interviews, there are mainly three types of business case/product sense problems:
+
+1. Make a binary choice---whether a feature is good, whether to enter a market...
+2. Predict a numeric value---sales, demand, CTR...
+3. Find out why---why certain metrics dropped, why some users perform worse than others...
+
+It's rare for a Data Science interviewer to ask you how to design a product feature.
+
+If it is a binary choice question, you should always state your hypothesis first, then look for evidence to support or reject your hypothesis.
+
 
 ## Probability and Brain Teaser
 
@@ -171,4 +274,5 @@ Resources consulted while creating this document:
 
 - Interpretable Machine Learning, https://christophm.github.io/interpretable-ml-book/
 - An Introduction to Statistical Learning, http://www-bcf.usc.edu/~gareth/ISL/
+- Wikipedia and Stackoverflow.
 

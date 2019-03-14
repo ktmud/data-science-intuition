@@ -38,6 +38,21 @@ For a 95% confidence interval, if we repeat the same sampling and estimation pro
 
 **General notes:** a lot of concepts in frequentist inference involves "take infinite samples" or "read the same measurement in the long run". This is directly related to the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem). You should always call out the fact that the confidence of our estimation is based on a repetitive sampling process.
 
+### How do you decide when to stop an experiment?
+
+### What's the difference between t-test, z-test, f-test, and Chi-squared test?
+
+- **One-sample t-test**: 
+
+### What is the difference between frequentist statistics and Bayesian statistics?
+
+In frequentist statistics, parameters are fixed constants. We calculate the likelihood $P(X|\theta)$, the probability of seeing the obsered data points given the parameter of interest.
+
+In Bayesian statistics, parameters are a random variable with certain distribution. We capture our priori uncertainty about the parameter in the form of a prior distribution, $P(\theta)$, then update our belief according to the data we observed, so to get a posterior distribution of the parameter, $P(\theta|X)$. Bayesian' Theorem tells us $P(\theta|X) \propto P(X|\theta) \cdot P(\theta)$.
+
+
+### What are the assumptions required for linear regression?
+
 ### What is R-squared?
 
 R-sqaured tells how much the variance of the target outcome is explained by the model. The higher R-squared, the better the model explains the data.
@@ -54,7 +69,15 @@ $$\bar{R}^2 = 1-\frac{SS_{res}/df_e}{SS_{tot}/df_t} = R^2 - (1 - R^2)\frac{p}{n-
 
 which penalizes more complex models.
 
-### What are the assumptions required for linear regression?
+### How to deal with multicollinearity in linear regression?
+
+Multicollinearity is when multiple predictors correlate with each other to a substantial degree.
+
+In addition to manually identify which variables could be correlated and leave only the most important ones in regression, a couple of methods can be used to automatiacally reduce collinearity:
+
+1. Ridge or Lasso regression: add L2/L1 regularization term to penalize complex models.
+2. Principal Component Regression:
+3. Partial Least Squares Regression:
 
 
 ### What is a statistical interaction?
@@ -62,14 +85,17 @@ which penalizes more complex models.
 
 ### What is selection bias?
 
-### What is the difference between frequentist statistics and Bayesian statistics?
 
-In frequentist statistics, parameters are fixed constants. We calculate the likelihood $P(X|\theta)$, the probability of seeing the obsered data points given the parameter of interest.
+### What is Propensity Score Matching?
 
-In Bayesian statistics, parameters are a random variable with certain distribution. We capture our priori uncertainty about the parameter in the form of a prior distribution, $P(\theta)$, then update our belief according to the data we observed, so to get a posterior distribution of the parameter, $P(\theta|X)$. Bayesian' Theorem tells us $P(\theta|X) \propto P(X|\theta) \cdot P(\theta)$.
+Propensity score is normally used in analyzing the effect of biased treatment assignment, e.g., how much do new clinics in poor villages affect the mortality rate? how much more expensive are waterfront properties than regular homes?
 
-### How should you decide when to stop an experiment?
+The basic idea is:
 
+1. Create a new control group by finding the most similar control observation for every treatment observation based on some selection variable (background characteristics).
+2. Compute the treatment effect by comparing the average outcome in the treatment and the new control group.
+
+The trick is in Step 1, in which we use Logistic Regression and all data available to estimate the probability that an observation receives the treatment. Then we use the probability to match pairs of similar observations.
 
 ----
 
@@ -151,6 +177,8 @@ Lasso is prefered because it can be automated, considers all features simultaneo
 
 #### Bagging (Random Forest)
 
+Bagging = Bootstrap Aggregation: bootstrap to pick a sample of training data with replacement, train separate submodels, aggregate submodels' predictions by taking the majority vote.
+
 Random Forest: use a subset of features to grow trees.
 
 - Pros:
@@ -197,9 +225,6 @@ Steps to compute PCA:
 4. The first $k$ columns of matrix $U$ is the principal components.
 5. $z = U_{reduced}' x$ is the reduced dimensions.
 
-The intuition of singular values:
-
-
 
 ## Business Case Study
 
@@ -208,12 +233,12 @@ For business case and product analysis type of problems, the most important thin
 In data science interviews, there are mainly three types of business case/product sense problems:
 
 1. Make a binary choice---whether a feature is good, whether to enter a market...
-2. Predict a numeric value---sales, demand, revenue...
+2. Predict a numeric value---sales, demand, CTR...
 3. Find out why---why certain metrics dropped, why some users perform worse than others...
 
-It's rare for a Data Science interviewer to ask you how would you design a product feature.
+It's rare for a Data Science interviewer to ask you how to design a product feature.
 
-your hypothesis first, then look for evidence to support or reject your hypothesis. If no hypothesis is needed, 
+If it is a binary choice question, you should always state your hypothesis first, then look for evidence to support or reject your hypothesis.
 
 
 ## Probability and Brain Teaser
@@ -249,4 +274,5 @@ Resources consulted while creating this document:
 
 - Interpretable Machine Learning, https://christophm.github.io/interpretable-ml-book/
 - An Introduction to Statistical Learning, http://www-bcf.usc.edu/~gareth/ISL/
+- Wikipedia and Stackoverflow.
 
