@@ -19,4 +19,5 @@ content = re.sub(
     content)
 
 open('README.md', 'w').write(content)
-os.system('./gh-md-toc README.md')
+os.system('./gh-md-toc --insert README.md')
+os.system('rm README.md.*')
