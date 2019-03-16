@@ -7,45 +7,59 @@ All answers here are written to be a quick response to interview questions so th
 <!--ts-->
    * [DS Intuition - Data Science Interview Questions](#ds-intuition---data-science-interview-questions)
    * [Statistics and Inference](#statistics-and-inference)
-      * [What is the Central Limit Theorem and why is it important?](#what-is-the-central-limit-theorem-and-why-is-it-important)
-      * [What is hypothesis testing?](#what-is-hypothesis-testing)
-      * [What P-value?](#what-p-value)
-      * [What is Statistical Power?](#what-is-statistical-power)
-      * [What is Confidence Interval?](#what-is-confidence-interval)
-      * [How do you decide when to stop an experiment?](#how-do-you-decide-when-to-stop-an-experiment)
-      * [What is the difference between t-test, z-test, f-test, and Chi-squared test?](#what-is-the-difference-between-t-test-z-test-f-test-and-chi-squared-test)
-      * [What is paired samples t-test, and how is it different from unpaired t-test?](#what-is-paired-samples-t-test-and-how-is-it-different-from-unpaired-t-test)
-      * [What is the difference between frequentist statistics and Bayesian statistics?](#what-is-the-difference-between-frequentist-statistics-and-bayesian-statistics)
-      * [What are the assumptions required for linear regression?](#what-are-the-assumptions-required-for-linear-regression)
-      * [What is R-squared?](#what-is-r-squared)
-      * [How to deal with multicollinearity in linear regression?](#how-to-deal-with-multicollinearity-in-linear-regression)
-      * [What's the relationship between Multiple Regression, General Linear Model and Generalized Linear Model?](#whats-the-relationship-between-multiple-regression-general-linear-model-and-generalized-linear-model)
-      * [What is a statistical interaction?](#what-is-a-statistical-interaction)
-      * [What is selection bias?](#what-is-selection-bias)
-      * [What is Propensity Score Matching?](#what-is-propensity-score-matching)
-   * [Machine Learning](#machine-learning)
-      * [Explain the relationship between type I Error, type II error, precision, recall, sensitivity and specificity.](#explain-the-relationship-between-type-i-error-type-ii-error-precision-recall-sensitivity-and-specificity)
-      * [What is ROC curve?](#what-is-roc-curve)
-      * [What is AUC?](#what-is-auc)
-      * [What's the difference between normalization and standardization?](#whats-the-difference-between-normalization-and-standardization)
-      * [What are the methods to reduce model complexity in linear regression?](#what-are-the-methods-to-reduce-model-complexity-in-linear-regression)
-      * [What's the difference between forward selection and backward selection?](#whats-the-difference-between-forward-selection-and-backward-selection)
-      * [Compare the advantages and disadvantages of different ML methods.](#compare-the-advantages-and-disadvantages-of-different-ml-methods)
+      * [Basic Concepts](#basic-concepts)
+         * [What is the Central Limit Theorem and why is it important?](#what-is-the-central-limit-theorem-and-why-is-it-important)
+         * [What is P-value?](#what-is-p-value)
+         * [What is Statistical Power?](#what-is-statistical-power)
+         * [What is Confidence Interval?](#what-is-confidence-interval)
+         * [What is a statistical interaction?](#what-is-a-statistical-interaction)
+         * [What is selection bias?](#what-is-selection-bias)
+      * [Hypothesis Test](#hypothesis-test)
+         * [What is hypothesis testing?](#what-is-hypothesis-testing)
+         * [What is the difference between t-test, z-test, f-test, and Chi-squared test?](#what-is-the-difference-between-t-test-z-test-f-test-and-chi-squared-test)
+         * [What is paired samples t-test, and how is it different from unpaired t-test?](#what-is-paired-samples-t-test-and-how-is-it-different-from-unpaired-t-test)
+      * [Experiment Design](#experiment-design)
+         * [How do you decide when to stop an experiment?](#how-do-you-decide-when-to-stop-an-experiment)
+      * [Bayesian Statistics](#bayesian-statistics)
+         * [What is the difference between frequentist statistics and Bayesian statistics?](#what-is-the-difference-between-frequentist-statistics-and-bayesian-statistics)
       * [Linear Regression](#linear-regression)
-      * [Decision Tree](#decision-tree)
-      * [Bagging (Random Forest)](#bagging-random-forest)
-      * [Boosting (Gradient Boosting Tree, AdaBoosting)](#boosting-gradient-boosting-tree-adaboosting)
-      * [Neutral Networks](#neutral-networks)
-      * [What is PCA?](#what-is-pca)
-      * [What are the techniques to reduce overfitting in Deep Learning?](#what-are-the-techniques-to-reduce-overfitting-in-deep-learning)
+         * [What are the assumptions required for linear regression?](#what-are-the-assumptions-required-for-linear-regression)
+         * [What is R-squared?](#what-is-r-squared)
+         * [How to deal with multicollinearity in linear regression?](#how-to-deal-with-multicollinearity-in-linear-regression)
+         * [What is the relationship between Multiple Regression, General Linear Model and Generalized Linear Model?](#what-is-the-relationship-between-multiple-regression-general-linear-model-and-generalized-linear-model)
+      * [Advanced Statistics](#advanced-statistics)
+         * [What is Propensity Score Matching?](#what-is-propensity-score-matching)
+   * [Machine Learning](#machine-learning)
+      * [Metrics](#metrics)
+         * [Explain the relationship between type I Error, type II error, precision, recall, sensitivity and specificity.](#explain-the-relationship-between-type-i-error-type-ii-error-precision-recall-sensitivity-and-specificity)
+         * [What is ROC curve?](#what-is-roc-curve)
+         * [What is AUC?](#what-is-auc)
+      * [Modelling](#modelling)
+         * [Compare the advantages and disadvantages of different ML methods.](#compare-the-advantages-and-disadvantages-of-different-ml-methods)
+            * [Linear Regression](#linear-regression-1)
+            * [Decision Tree](#decision-tree)
+            * [Bagging (Random Forest)](#bagging-random-forest)
+            * [Boosting (Gradient Boosting Tree, AdaBoosting)](#boosting-gradient-boosting-tree-adaboosting)
+            * [Neutral Networks](#neutral-networks)
+         * [What is the difference between normalization and standardization?](#what-is-the-difference-between-normalization-and-standardization)
+         * [What are the methods to reduce model complexity in linear regression?](#what-are-the-methods-to-reduce-model-complexity-in-linear-regression)
+         * [What's the difference between forward selection and backward selection?](#whats-the-difference-between-forward-selection-and-backward-selection)
+         * [What are the methods for dimension reduction?](#what-are-the-methods-for-dimension-reduction)
+         * [What is PCA?](#what-is-pca)
+      * [Neutral Networks / Deep Learning](#neutral-networks--deep-learning)
+         * [What are the techniques to reduce overfitting in Deep Learning?](#what-are-the-techniques-to-reduce-overfitting-in-deep-learning)
       * [What activation functions do you know?](#what-activation-functions-do-you-know)
-   * [Business Case Study](#business-case-study)
+   * [Product/Business](#productbusiness)
    * [SQL](#sql)
-      * [What is the difference between ON clause and WHERE clause in joins?](#what-is-the-difference-between-on-clause-and-where-clause-in-joins)
-   * [Probability and Brain Teaser](#probability-and-brain-teaser)
-      * [How to get fair results from a biased coin?](#how-to-get-fair-results-from-a-biased-coin)
-      * [Pick 3 cards from a deck of cards labeled from 1 to 100, what’s the probability of getting Card 1 &lt; Card 2 &lt; Card 3?](#pick-3-cards-from-a-deck-of-cards-labeled-from-1-to-100-whats-the-probability-of-getting-card-1--card-2--card-3)
-      * [Toss 3 fair dices one by one, get 3 numbers x, y, z, what is the probability of x &lt; y &lt; z?](#toss-3-fair-dices-one-by-one-get-3-numbers-x-y-z-what-is-the-probability-of-x--y--z)
+      * [Concepts](#concepts)
+         * [What is the difference between ON clause and WHERE clause in joins?](#what-is-the-difference-between-on-clause-and-where-clause-in-joins)
+      * [Coding Excercise](#coding-excercise)
+   * [Brain Teaser](#brain-teaser)
+      * [Probability](#probability)
+         * [How to get fair results from a biased coin?](#how-to-get-fair-results-from-a-biased-coin)
+         * [Pick 3 cards from a deck of cards labeled from 1 to 100, what’s the probability of getting Card 1 &lt; Card 2 &lt; Card 3?](#pick-3-cards-from-a-deck-of-cards-labeled-from-1-to-100-whats-the-probability-of-getting-card-1--card-2--card-3)
+         * [Toss 3 fair dices one by one, get 3 numbers x, y, z, what is the probability of x &lt; y &lt; z?](#toss-3-fair-dices-one-by-one-get-3-numbers-x-y-z-what-is-the-probability-of-x--y--z)
+      * [Other](#other)
    * [Credit](#credit)
 
 <!-- Added by: jesse, at:  -->
@@ -56,19 +70,15 @@ All answers here are written to be a quick response to interview questions so th
 
 # Statistics and Inference
 
-## What is the Central Limit Theorem and why is it important?
+## Basic Concepts
+
+### What is the Central Limit Theorem and why is it important?
 
 Given a sufficiently large sample from a population with finite variance, the sum/mean of the samples would tend to a normal distribution, regardless of the distribution of the population.
 
 It is important because it simplifies problems in statistics by allowing us to work on an approximately normal distribution. 
 
-## What is hypothesis testing?
-
-We hypothesis there is no difference between two groups, and call it the "null hypothesis", then we look for evidence to reject the null hypythosis.
-
-The evidence is based on how likely we will see the same sample statistics again if the null hypothesis is true.
-
-## What P-value?
+### What is P-value?
 
 P-value is the probablity of observing data at least as favorable to the alternative hypothesis as our current data, when null hypothesis is true.
 
@@ -76,18 +86,30 @@ P-value is the probablity of observing data at least as favorable to the alterna
 
 **In the context of linear regression:** Each term has a p-value, where the null hypothesis is that the coefficient should be 0.
 
-## What is Statistical Power?
+### What is Statistical Power?
 
 
-## What is Confidence Interval?
+### What is Confidence Interval?
 
 For a 95% confidence interval, if we repeat the same sampling and estimation process 100 times, the confidence interval would include the true parameter 95 of the times.
 
 **General notes:** a lot of concepts in frequentist inference involves "take infinite samples" or "read the same measurement in the long run". This is directly related to the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem). You should always call out the fact that the confidence of our estimation is based on a repetitive sampling process.
 
-## How do you decide when to stop an experiment?
+### What is a statistical interaction?
 
-## What is the difference between t-test, z-test, f-test, and Chi-squared test?
+
+### What is selection bias?
+
+
+## Hypothesis Test
+
+### What is hypothesis testing?
+
+We hypothesis there is no difference between two groups, and call it the "null hypothesis", then we look for evidence to reject the null hypythosis.
+
+The evidence is based on how likely we will see the same sample statistics again if the null hypothesis is true.
+
+### What is the difference between t-test, z-test, f-test, and Chi-squared test?
 
 - Z-test is based on standard normal distribution and variance of the population. Z score, a.k.a, standard score, is basically how much different is a sample mean (or an observation) is from the population mean in units of population standard error (![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5Csqrt%7B%5Cmathrm%7Bmean%5C%20variance%7D%20/%20N%7D)):
   
@@ -105,20 +127,28 @@ For a 95% confidence interval, if we repeat the same sampling and estimation pro
   When sample size is large, student's t-distribution is very close to standard normal distribution. Therefore, in real world application, t-test is normally preferred over z-test.
 
 
-## What is paired samples t-test, and how is it different from unpaired t-test?
+### What is paired samples t-test, and how is it different from unpaired t-test?
 
 Paried samples t-test typically consists of a sample of matched pairs of similar units, or one group of units has been tested twice. E.g., before and after a treatment. Such a "repeated measures" test compares measurements within subjects, rather than across subjects, which will generally increase the statistical power, or reduce the effects of confounders (variables related to both the outcome and the treatment assignment).
 
-## What is the difference between frequentist statistics and Bayesian statistics?
+## Experiment Design
+
+### How do you decide when to stop an experiment?
+
+
+## Bayesian Statistics
+
+### What is the difference between frequentist statistics and Bayesian statistics?
 
 In frequentist statistics, parameters are fixed constants. We calculate the likelihood ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28X%7C%5Ctheta%29), the probability of seeing the obsered data points given the parameter of interest.
 
 In Bayesian statistics, parameters are a random variable with certain distribution. We capture our priori uncertainty about the parameter in the form of a prior distribution, ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%29), then update our belief according to the data we observed, so to get a posterior distribution of the parameter, ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%7CX%29). Bayesian' Theorem tells us ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%28%5Ctheta%7CX%29%20%5Cpropto%20P%28X%7C%5Ctheta%29%20%5Ccdot%20P%28%5Ctheta%29).
 
+## Linear Regression
 
-## What are the assumptions required for linear regression?
+### What are the assumptions required for linear regression?
 
-## What is R-squared?
+### What is R-squared?
 
 R-sqaured tells how much the variance of the target outcome is explained by the model. The higher R-squared, the better the model explains the data.
 
@@ -134,7 +164,7 @@ More features fit the data better, therefore will see smaller SSE. It's better t
 
 which penalizes more complex models.
 
-## How to deal with multicollinearity in linear regression?
+### How to deal with multicollinearity in linear regression?
 
 Multicollinearity is when multiple predictors correlate with each other to a substantial degree.
 
@@ -151,18 +181,11 @@ PLS can be used to:
 2. Identify outliers.
 3. Make EDA plots to select predictors.
 
-## What's the relationship between Multiple Regression, General Linear Model and Generalized Linear Model?
+### What is the relationship between Multiple Regression, General Linear Model and Generalized Linear Model?
 
+## Advanced Statistics
 
-
-
-## What is a statistical interaction?
-
-
-## What is selection bias?
-
-
-## What is Propensity Score Matching?
+### What is Propensity Score Matching?
 
 Propensity score is normally used in analyzing the effect of biased treatment assignment, e.g., how much do new clinics in poor villages affect the mortality rate? how much more expensive are waterfront properties than regular homes?
 
@@ -177,7 +200,9 @@ The trick is in Step 1, in which we use Logistic Regression and all data availab
 
 # Machine Learning
 
-## Explain the relationship between type I Error, type II error, precision, recall, sensitivity and specificity.
+## Metrics
+
+### Explain the relationship between type I Error, type II error, precision, recall, sensitivity and specificity.
 
 - **Type I error: False Positive**, incorrectrly reject the null hypothesis when null is true
   - Perfect specificity gives zero Type I error.
@@ -199,49 +224,26 @@ The trick is in Step 1, in which we use Logistic Regression and all data availab
 - True positive + false positive = all assumed positive observations.
 - False positive + true negative = all known negative observations.
 
-## What is ROC curve?
+### What is ROC curve?
 
 Receiver operating characteristics (ROC) curve is a plot of true positive rate against false positive rate at various threshold settings, normally with the x-axis being the false positive rate (1 - sensitivity), and the y-axis being the true positive rate (sensitivity).
 
 We make a prediction ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dp%20%5Cin%20%5B0%2C%201%5D), using different threshold ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dq%20%5Cin%20%280%2C%201%29), we say all observations with ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dp%20%3C%20q) are negative, and others positive.
 
-## What is AUC?
+### What is AUC?
 
 AUC is the probability that a randomly chosen observation from the positive class is greater than a randomly chosen observation from the negative class.
 
+## Modelling
 
-## What's the difference between normalization and standardization?
+### Compare the advantages and disadvantages of different ML methods.
 
-Normalization "normalize" values to a range of [0, 1], by substract the minimal value then divide by value range.
-
-<p align="center"><img alt="" src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7Dx%27%20%3D%20%5Cfrac%7Bx%20-%20x_%7B%5Cmin%7D%7D%7Bx_%7B%5Cmax%7D%20-%20x_%7B%5Cmin%7D%7D"></p>
-
-Standardization "standardize" values to multiples of standard deviation by removing the mean then divide by standard deviation.
-
-<p align="center"><img alt="" src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7Dx%27%20%3D%20%5Cfrac%7Bx%20-%20%5Cmu%7D%7B%5Csigma%7D"></p>
-
-## What are the methods to reduce model complexity in linear regression?
-
-Reducing model complexity is equivalent to introducing sparsity when there are too many features. We do this mostly for combating overfitting. Possible methods include:
-
-- **Lasso regression**: L1 regularization, large ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5Clambda) would make some coefficients to be 0.
-- **Manually select** features using expert knowledge.
-- **Univariate selection**: only select features whose correlation coefficient with the target variable exceed certain threshold.
-- **Step-wise methods**: forward selection or backward selection.
-
-Lasso is prefered because it can be automated, considers all features simultaneously, and can be controlled via lambda.
-
-## What's the difference between forward selection and backward selection?
-
-
-## Compare the advantages and disadvantages of different ML methods.
-
-## Linear Regression
+#### Linear Regression
 
 - Pros:
 - Cons:
 
-## Decision Tree
+#### Decision Tree
 
 - Pros:
   - Easy to explain and interpretable
@@ -251,7 +253,7 @@ Lasso is prefered because it can be automated, considers all features simultaneo
   - High variance
   - Poor additive modeling
 
-## Bagging (Random Forest)
+#### Bagging (Random Forest)
 
 Bagging = Bootstrap Aggregation: bootstrap to pick a sample of training data with replacement, train separate submodels, aggregate submodels' predictions by taking the majority vote.
 
@@ -268,7 +270,7 @@ Random Forest: use a subset of features to grow trees.
   - Harder to interpret
   - More expensive to train
 
-## Boosting (Gradient Boosting Tree, AdaBoosting)
+#### Boosting (Gradient Boosting Tree, AdaBoosting)
 
 AdaBoosting: up-weight misclassified data points at each step.
 
@@ -279,16 +281,39 @@ AdaBoosting: up-weight misclassified data points at each step.
   - Increase in variance
   - Prone to overfitting
 
-
-## Neutral Networks
+#### Neutral Networks
 
 - Pros:
   - Handles unstructured data (CV, NLP) well
 
 **Cons:**
 
+### What is the difference between normalization and standardization?
 
-## What is PCA?
+Normalization "normalize" values to a range of [0, 1], by substract the minimal value then divide by value range.
+
+<p align="center"><img alt="" src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7Dx%27%20%3D%20%5Cfrac%7Bx%20-%20x_%7B%5Cmin%7D%7D%7Bx_%7B%5Cmax%7D%20-%20x_%7B%5Cmin%7D%7D"></p>
+
+Standardization "standardize" values to multiples of standard deviation by removing the mean then divide by standard deviation.
+
+<p align="center"><img alt="" src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B130%7Dx%27%20%3D%20%5Cfrac%7Bx%20-%20%5Cmu%7D%7B%5Csigma%7D"></p>
+
+### What are the methods to reduce model complexity in linear regression?
+
+Reducing model complexity is equivalent to introducing sparsity when there are too many features. We do this mostly for combating overfitting. Possible methods include:
+
+- **Lasso regression**: L1 regularization, large ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5Clambda) would make some coefficients to be 0.
+- **Manually select** features using expert knowledge.
+- **Univariate selection**: only select features whose correlation coefficient with the target variable exceed certain threshold.
+- **Step-wise methods**: forward selection or backward selection.
+
+Lasso is prefered because it can be automated, considers all features simultaneously, and can be controlled via lambda.
+
+### What's the difference between forward selection and backward selection?
+
+### What are the methods for dimension reduction?
+
+### What is PCA?
 
 Principal Component Analysis: the process of projecting high dimensional data to lower dimensional vectors in a way that minimizes the projection error. Typically done by matrix decomposition.
 
@@ -300,7 +325,9 @@ Steps to compute PCA:
 4. The first ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dk) columns of matrix ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DU) is the principal components.
 5. ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dz%20%3D%20U_%7Breduced%7D%27%20x) is the reduced dimensions.
 
-## What are the techniques to reduce overfitting in Deep Learning?
+## Neutral Networks / Deep Learning
+
+### What are the techniques to reduce overfitting in Deep Learning?
 
 - L2 and L2 Regularization
     - Cost = Loss + Regularization term
@@ -314,10 +341,9 @@ Steps to compute PCA:
 ## What activation functions do you know?
 
 
+# Product/Business
 
-# Business Case Study
-
-For business case and product analysis type of problems, the most important thing is demonstrate a clear structure in your answers. You'd need: 1. a clear framework or issue tree to tackle the problem; 2. a clear hypothesis whenever applicable.
+For business case and product analysis type of questions, the most important thing is to demonstrate a clear structure in your answers. You'd need: 1. a clear framework or issue tree to tackle the problem; 2. a clear hypothesis whenever applicable.
 
 In data science interviews, there are mainly three types of business case/product sense problems:
 
@@ -331,12 +357,17 @@ If it is a binary choice question, you should always state your hypothesis first
 
 # SQL
 
-## What is the difference between ON clause and WHERE clause in joins?
+## Concepts
 
+### What is the difference between ON clause and WHERE clause in joins?
 
-# Probability and Brain Teaser
+## Coding Excercise
 
-## How to get fair results from a biased coin?
+# Brain Teaser
+
+## Probability 
+
+### How to get fair results from a biased coin?
 
 John von Neumann gave the following procedure:
 
@@ -346,17 +377,17 @@ John von Neumann gave the following procedure:
 
 This is because the probability of getting head then tail is the same as getting tail then head. By excluding the other two outcomes of two indepedent tosses---getting both heads and getting both tails, we are left with only two outcomes with equal probability.
 
-## Pick 3 cards from a deck of cards labeled from 1 to 100, what’s the probability of getting Card 1 < Card 2 < Card 3?
+### Pick 3 cards from a deck of cards labeled from 1 to 100, what’s the probability of getting Card 1 < Card 2 < Card 3?
 
 The three cards are equivalent to 3 random numbers from [1, 100] without replacement. Getting Card 1 < Card 2 < Card 3 is equivalent to getting the numbers in a specific order. There are in total ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7DP%283%2C%203%29%20%3D%206) ways of arranging 3 numbers. Therefore the probability of Card 1 < Card 2 < Card 3 is ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D1/6).
 
-## Toss 3 fair dices one by one, get 3 numbers x, y, z, what is the probability of x < y < z?
+### Toss 3 fair dices one by one, get 3 numbers x, y, z, what is the probability of x < y < z?
 
 Event space: ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D6%20%5Ctimes%206%20%5Ctimes%206%20%3D%20216). Two of x, y, z are equal: ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D3%20%5Ctimes%206%20%5Ctimes%205); all three are equal: ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D6).
 
 The remaning ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D216%20-%203%20%5Ctimes%206%20%5Ctimes%205%20-%206%20%3D%20120) outcomes  are basically arranging 3 different numbers, all from the same discrete uniform distribution ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%5B1%2C%206%5D), in different orders. Similar to previous question, there are ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D120/6%20%3D%2020) ways of getting ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7Dx%20%3C%20y%20%3C%20z). The probability is ![-](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D20%20/%20216%20%3D%209.26%5C%25).
 
-
+## Other
 
 
 ---
