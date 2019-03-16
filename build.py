@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import re
+import os
+
 from urllib.parse import quote as encode_uri
 
 content = open('DS_Intuition.md').read()
@@ -17,3 +19,4 @@ content = re.sub(
     content)
 
 open('README.md', 'w').write(content)
+os.system('./gh-md-toc README.md')

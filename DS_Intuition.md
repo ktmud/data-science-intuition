@@ -4,6 +4,9 @@ Build your intuition on important Data Science/Statistics/Machine Learning conce
 
 All answers here are written to be a quick response to interview questions so that you can impress them with your intuitive understanding of the concepts.
 
+<!--ts-->
+<!--te-->
+
 ----
 
 ## Statistics and Inference
@@ -40,9 +43,27 @@ For a 95% confidence interval, if we repeat the same sampling and estimation pro
 
 ### How do you decide when to stop an experiment?
 
-### What's the difference between t-test, z-test, f-test, and Chi-squared test?
+### What is the difference between t-test, z-test, f-test, and Chi-squared test?
 
-- **One-sample t-test**: 
+- Z-test is based on standard normal distribution and variance of the population. Z score, a.k.a, standard score, is basically how much different is a sample mean (or an observation) is from the population mean in units of population standard error ($\sqrt{\mathrm{mean\ variance} / N}$):
+  
+  $$z = \frac{\bar{X} - \mu}{SE} = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}},$$
+
+  where $\sigma$ is the population standard deviation.
+  
+  When sample size is large, we can assume the sample mean and variance are close enough to that of the population, then we can use z-test.
+- Student's t-test, on the other hand, is based on Student's t-distribution, which would have different shapes in accordance to degree of freedom (sample size).
+
+  $$t = \frac{\bar{X} - \mu}{SE_{X}} = \frac{\bar{X} - \mu}{s / \sqrt{n}},$$
+
+  where $s$ is the sample standard deviation.
+
+  When sample size is large, student's t-distribution is very close to standard normal distribution. Therefore, in real world application, t-test is normally preferred over z-test.
+
+
+### What is paired samples t-test, and how is it different from unpaired t-test?
+
+Paried samples t-test typically consists of a sample of matched pairs of similar units, or one group of units has been tested twice. E.g., before and after a treatment. Such a "repeated measures" test compares measurements within subjects, rather than across subjects, which will generally increase the statistical power, or reduce the effects of confounders (variables related to both the outcome and the treatment assignment).
 
 ### What is the difference between frequentist statistics and Bayesian statistics?
 
@@ -75,9 +96,20 @@ Multicollinearity is when multiple predictors correlate with each other to a sub
 
 In addition to manually identify which variables could be correlated and leave only the most important ones in regression, a couple of methods can be used to automatiacally reduce collinearity:
 
-1. Ridge or Lasso regression: add L2/L1 regularization term to penalize complex models.
-2. Principal Component Regression:
-3. Partial Least Squares Regression:
+1. Ridge or Lasso Regression: add L2/L1 regularization term to penalize complex models.
+2. Principal Component Regression: predict from factors underlying the predictors (extracted with X'X matrix).
+3. Canonical Correlation: predict factors underlying responses (extracted with Y'Y matrix) from factors underlying the predictors.
+4. Partial Least Squares Regression: represent predict functions by factors extracted from the Y'XX'Y matrix.
+
+PLS can be used to:
+
+1. Regress when n < p.
+2. Identify outliers.
+3. Make EDA plots to select predictors.
+
+### What's the relationship between Multiple Regression, General Linear Model and Generalized Linear Model?
+
+
 
 
 ### What is a statistical interaction?
@@ -212,7 +244,6 @@ AdaBoosting: up-weight misclassified data points at each step.
 **Cons:**
 
 
-
 ### What is PCA?
 
 Principal Component Analysis: the process of projecting high dimensional data to lower dimensional vectors in a way that minimizes the projection error. Typically done by matrix decomposition.
@@ -224,6 +255,20 @@ Steps to compute PCA:
 3. Run Singular Value Decomposition: $\Sigma = USV'$, in which diagonal entries of $S$ are known as the singular value of $\Sigma$.
 4. The first $k$ columns of matrix $U$ is the principal components.
 5. $z = U_{reduced}' x$ is the reduced dimensions.
+
+### What are the techniques to reduce overfitting in Deep Learning?
+
+- L2 and L2 Regularization
+    - Cost = Loss + Regularization term
+- Dropouts
+    - Randomly drop some nodes during each training iteration
+    - Similar to ensemble methods
+- Data Augmentation
+    - Flip, shift, scale, rotate, shear images...
+- Early Stopping
+
+### What activation functions do you know?
+
 
 
 ## Business Case Study
@@ -239,6 +284,10 @@ In data science interviews, there are mainly three types of business case/produc
 It's rare for a Data Science interviewer to ask you how to design a product feature.
 
 If it is a binary choice question, you should always state your hypothesis first, then look for evidence to support or reject your hypothesis.
+
+## SQL
+
+### What is the difference between ON clause and WHERE clause in joins?
 
 
 ## Probability and Brain Teaser
