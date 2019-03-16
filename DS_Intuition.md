@@ -2,7 +2,7 @@
 
 Build your intuition on important Data Science/Statistics/Machine Learning concepts. Use this material as a study guide for interviews or exams.
 
-All answers here are written to be a quick response to interview questions so that you can impress them with your intuitive understanding of the concepts.
+All answers here are written to be a quick response to interview questions so that you can impress the interviewer with your intuitive understanding of the concepts.
 
 <!--ts-->
 <!--te-->
@@ -137,6 +137,9 @@ The basic idea is:
 
 The trick is in Step 1, in which we use Logistic Regression and all data available to estimate the probability that an observation receives the treatment. Then we use the probability to match pairs of similar observations.
 
+### What are the methods to deal with nonlinearities in regression?
+
+
 ----
 
 # Machine Learning
@@ -182,17 +185,27 @@ AUC is the probability that a randomly chosen observation from the positive clas
 #### Linear Regression
 
 - Pros:
+    - Very easy to interpret
+    - Mathematically straightforward and optimal weights are guaranteed
+    - With weights you get confidence intervals, tests, and solid statistical theory
 - Cons:
+    - Nonlinearities and interactions, if there's any, have to be manually added
+    - Linearity assumption can be to restrictive, resulting in subpar predictive performance
+    - Inpterpretation of a weight can be unintuitive when it depends on other features
 
 #### Decision Tree
 
 - Pros:
   - Easy to explain and interpretable
-  - Categorical variable support
-  - Fast
+  - Support categorical variable out-of-the-box
+  - No need to transform features
+  - Capture interactions between features well
 - Cons:
-  - High variance
+  - Unstable, i.e., high variance
   - Poor additive modeling
+  - Fail to deal with linear relationship, resulting in lack of smoothness
+
+A caveat is that number of terminal nodes increase quickly with depth and deep trees are difficult to interpret (because of too many decision rules).
 
 #### Bagging (Random Forest)
 
@@ -226,8 +239,8 @@ AdaBoosting: up-weight misclassified data points at each step.
 
 - Pros:
   - Handles unstructured data (CV, NLP) well
+- Cons:
 
-**Cons:**
 
 ### What is the difference between normalization and standardization?
 
@@ -252,6 +265,41 @@ Lasso is prefered because it can be automated, considers all features simultaneo
 
 ### What's the difference between forward selection and backward selection?
 
+### Why do we not use linear regression for classification?
+
+1. A linear model does not output probabilities.
+2. The prediction can be below zero or above one, there is no meaningful threshold to distinguish one class from the other.
+3. It cannot extend to multi-class classification problems.
+
+### How to interpret logistic regression?
+
+$$
+P(y_i=1) = \frac{1}{1 + e^{-\hat{y_i}}}, y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + ...
+$$
+
+We wrap a linear model with the logistic function, so to squeeze the output between 0 and 1. Inverse the logistic function, we get the logit function:
+
+$$
+\hat{y}_i = \log \left( \frac{P(y_i=1)}{1 - P(y_i=1)} \right)
+$$
+
+Which is equivalent to:
+
+$$
+\log \left( \frac{P(y_i=1)}{P(y_i=0)} \right) = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + ...
+$$
+
+The term inside the log function is called "odds" (probability of even divided by probability of no event), thus we can say logistic regression is a linear model for log odds.
+
+> A change in a feature by one unit changes the odds ratio (multiplicative) by a factor of $\exp(\beta_i)$.
+
+We can also say
+
+> A change in $x_i$ by one unit increases the log odds ratio by the value of the corresponding weight. 
+
+[Details here](https://christophm.github.io/interpretable-ml-book/logistic.html).
+
+
 ### What are the methods for dimension reduction?
 
 ### What is PCA?
@@ -265,6 +313,9 @@ Steps to compute PCA:
 3. Run Singular Value Decomposition: $\Sigma = USV'$, in which diagonal entries of $S$ are known as the singular value of $\Sigma$.
 4. The first $k$ columns of matrix $U$ is the principal components.
 5. $z = U_{reduced}' x$ is the reduced dimensions.
+
+### What is an identify function? A hinge function?
+
 
 ## Neutral Networks / Deep Learning
 
@@ -286,15 +337,22 @@ Steps to compute PCA:
 
 For business case and product analysis type of questions, the most important thing is to demonstrate a clear structure in your answers. You'd need: 1. a clear framework or issue tree to tackle the problem; 2. a clear hypothesis whenever applicable.
 
-In data science interviews, there are mainly three types of business case/product sense problems:
+In data science interviews, there are mainly three types of business/product sense problems:
 
-1. Make a binary choice---whether a feature is good, whether to enter a market...
-2. Predict a numeric value---sales, demand, CTR...
-3. Find out why---why certain metrics dropped, why some users perform worse than others...
+1. Decision making: make a binary choice, e.g., whether a feature is good, whether to enter a market...
+2. Forecasting: predict a numeric value, sales, demand, CTR...
+3. Reasoning: find out whycertain metrics dropped, why some users perform worse than others...
 
 It's rare for a Data Science interviewer to ask you how to design a product feature.
 
-If it is a binary choice question, you should always state your hypothesis first, then look for evidence to support or reject your hypothesis.
+## Decision Making
+
+For decision making questions, especially binary choices, you should always state your hypothesis first, then look for evidence to support or reject your hypothesis. Use the following template:
+
+> My hypothesis is that we should [enter this market]. To test my hypothesis, I 'd like to [look at a couple of factors/track the following metrics]: ...
+
+## Forecasting
+
 
 # SQL
 
