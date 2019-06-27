@@ -59,6 +59,7 @@ The evidence is based on how likely we will see the same sample statistics again
   where $\sigma$ is the population standard deviation.
   
   When sample size is large, we can assume the sample mean and variance are close enough to that of the population, then we can use z-test.
+  
 - Student's t-test, on the other hand, is based on Student's t-distribution, which would have different shapes in accordance to degree of freedom (sample size).
 
   $$t = \frac{\bar{X} - \mu}{SE_{X}} = \frac{\bar{X} - \mu}{s / \sqrt{n}},$$
@@ -139,6 +140,25 @@ The trick is in Step 1, in which we use Logistic Regression and all data availab
 
 ### What are the methods to deal with nonlinearities in regression?
 
+### What to do when ...
+
+1. data is not i.i.d. (independent and identically distributed)?
+   - mixed models, generalized estimating equations
+2. model has heteroscedastic errors (different variance for different values, e.g. prediction errors are larger for more expensive houses)?
+   - robust regression
+3. outliers strongly influence my model?
+   - robust regression
+4. I want to predict time-to-event but event is rare?
+   - parametric survival models, cox regression, survival analysis.
+5. I need to predict ordered categories (e.g., school grades)?
+   - proportional odds model.
+6. my outcome is count?
+   - Use [Poisson regression](https://en.wikipedia.org/wiki/Poisson_regression) or negative binomial regression.
+   - When count zero is very frequent, use zero-inflated Poisson regression or hurdle model.
+7. I have missing data?
+   - Multiple imputation
+
+Above list is copied from the [Interpretable ML](https://christophm.github.io/interpretable-ml-book/extend-lm.html) book.
 
 ----
 
@@ -162,7 +182,7 @@ The trick is in Step 1, in which we use Logistic Regression and all data availab
     = 1 - sensitivity / recall / power <br>
     = 1 - the probaility of detecting the effect when there is indeed an effect.
 
-**True positive** means the prediction of being positive is true. Therefore "true positive rate" means of all observations predicted to be positive, how many of them are actually positive.
+**True positive** means the prediction of being positive is true. Therefore "true positive rate" means of all observations that are actually positive, how many of them are predicted positive.
 
 - True positive + false negative = all known positive observations. 
 - True positive + false positive = all assumed positive observations.
@@ -289,7 +309,7 @@ $$
 \log \left( \frac{P(y_i=1)}{P(y_i=0)} \right) = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + ...
 $$
 
-The term inside the log function is called "odds" (probability of even divided by probability of no event), thus we can say logistic regression is a linear model for log odds.
+The term inside the log function is called "odds" (probability of event divided by probability of no event), thus we can say **logistic regression is a linear model for log odds**.
 
 > A change in a feature by one unit changes the odds ratio (multiplicative) by a factor of $\exp(\beta_i)$.
 
@@ -301,6 +321,15 @@ We can also say
 
 
 ### What are the methods for dimension reduction?
+
+1. Remove columns with too many missing values
+2. Remove columns with constant value or low variance
+3. Reduce highly correlated columns, pick the one with the largest variance
+4. Use domain knowledge to select an appropriate set of features
+5. Rank features based on their importance measured from information gain or linear regression
+6. Use PCA
+7. Use Lasso/Ridge regression 
+
 
 ### What is PCA?
 
@@ -315,6 +344,13 @@ Steps to compute PCA:
 5. $z = U_{reduced}' x$ is the reduced dimensions.
 
 ### What is an identify function? A hinge function?
+
+### How to handle umbalanced data?
+
+1. Undersample the larger classes or oversample the smaller classes
+2. For oversampling, we could do bootstraping (sample with replacement) or SMOTE (Synthetic Minority Over-sampling Technique):
+    take a random sample and its random closest neighbor within k ranks, nudge each feature towards the neighbor a little bit.
+3. Penalize classification by increasing weights to the minority class
 
 
 ## Neutral Networks / Deep Learning
@@ -331,6 +367,10 @@ Steps to compute PCA:
 - Early Stopping
 
 ## What activation functions do you know?
+
+## What is hidden in Hidden Markov Model?
+
+Markov models are Bayesian networks. In 
 
 
 # Product/Business
@@ -371,8 +411,8 @@ For decision making questions, especially binary choices, you should always stat
 John von Neumann gave the following procedure:
 
 1. Toss the coin twice.
-2. If the results match, start over, forgetting both results.
-3. If the results differ, use the first result, forgetting the second.
+2. If the results match, start over, forget both results.
+3. If the results differ, use the first result, forget the second.
 
 This is because the probability of getting head then tail is the same as getting tail then head. By excluding the other two outcomes of two indepedent tosses---getting both heads and getting both tails, we are left with only two outcomes with equal probability.
 

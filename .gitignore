@@ -1,3 +1,6 @@
 .vscode
 *.orig.*
 *.toc.*
+
+.ipynb_checkpoints
+
